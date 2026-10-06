@@ -19,7 +19,7 @@ How to run:
 
 7. Capture the position data, so stop the Pi program, close the serial monitor. Set teh right port in capture_position_step.m. Zero and reset the wheels. Then run it and run position_control_sim.m.
 
-8. Capture the open loop data by uploading EENG350_StepResponseTest.ino. Then run capture_step_response.m with the right port.
+8. Run capture_step_response.m with the right port.
 
 More on the specific files:
 
