@@ -42,7 +42,7 @@ def i2c_worker():
             goal = q.get()
 
         try:
-            arduino.write_i2c_block_data(ARD_ADDR, 0, goal)
+            arduino.write_byte(ARD_ADDR, goal[0] * 2 + goal[1])
         except OSError:
             print("Arduino not responding (not connected?)")
 
