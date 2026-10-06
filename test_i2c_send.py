@@ -20,7 +20,7 @@ while True:
         break
     try:
         left, right = [int(n) for n in text.split()]
-        arduino.write_i2c_block_data(ARD_ADDR, 0, [left, right])
+        arduino.write_byte(ARD_ADDR, left * 2 + right)
         print("Sent", [left, right])
     except ValueError:
         print("Type two numbers like: 0 1")
