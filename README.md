@@ -35,10 +35,10 @@ Following a 3 volt step, this is angular velocity and commanded voltage for both
 For a 0 to pi position commmand, in radians, the voltage and position is commanded. The outer pi position controller makes the desired_speed, explained in the code you'll see. The inner velocity controller makes the motor voltage. Comparing experimental w/ nominal in these graphs: 
 <img width="1001" height="721" alt="Screenshot 2026-10-05 at 8 25 34 PM" src="https://github.com/user-attachments/assets/fc4ca45a-2f25-40d9-9d16-ac3d604ff130" />
 
-**This is the Position-Control Simulink diagram**
-It's a cascaded position-control model for both of the wheels. Every wheel uses an outer PI position loop. They also use voltage saturation, velocity loop, and first-order motor model. We integrated motor velocity and that gave us angular position for the position feedback. 
-<img width="659" height="448" alt="Screenshot 2026-10-05 at 8 26 22 PM" src="https://github.com/user-attachments/assets/0c1c89b9-75eb-4d86-bbce-3bb9feb00b65" />
-
 **This is the Open-Loop Simulink diagram**
 These are open loop models of both of the motors. The 3V passes through the voltage saturation block. The motor transfer function, Ksigma/(s+sigma), is used to predict the angular velocity. 
+<img width="659" height="448" alt="Screenshot 2026-10-05 at 8 26 22 PM" src="https://github.com/user-attachments/assets/0c1c89b9-75eb-4d86-bbce-3bb9feb00b65" />
+
+**This is the Position-Control Simulink diagram**
+It's a cascaded position-control model for both of the wheels. Every wheel uses an outer PI position loop. They also use voltage saturation, velocity loop, and first-order motor model. We integrated motor velocity and that gave us angular position for the position feedback. 
 <img width="695" height="445" alt="Screenshot 2026-10-05 at 8 27 16 PM" src="https://github.com/user-attachments/assets/a2d1f1d1-7d60-494a-ab60-f8bfa0511cdd" />
