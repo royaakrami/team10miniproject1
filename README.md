@@ -1,20 +1,41 @@
-This is Team 10's joint computer vision & localization/control submission for the first Mini Project. It contains the following folders:
+This is Team 10's joint computer vision & localization/control submission for the first Mini Project. 
 
 **Graphs for documentation are further down** 
 
-Computer Vision: 
+
+How to run:
+
+1. Set up Pi, have pi_main.py and marker_quadrant.py in the same folder. Enable I2C and then make sure you have OpenCV with AruCo installed, along with smbus2, and any other libraries used in our work such as Adafruit for the LCD display.
+
+2. Keep the power off and connect the hardware, i.e the USB webcame goes to Pi, the LCD goes to Pi I2C, the Pi SDA and GPIO2 both go to Arduino A4, and the SCL and GPIO3 go to A5, and ground goes to ground.
+
+3. The motor wiring needs to be matched to the sketch, so that means that Driver enables D4. The motor 1 direction and PWM D7/D9, and the encoder A/B D3/D6. The motor 2 direction PWM D8/D10, and the encoder A/B D2/D5. So the motors and the motor power will be connected through the driver.
+
+4. Then upload the controller, i.e MiniProject_PositionControl.ino. Both tape 0 marks need to be put upward. This should be done before you reset the Arduino so that the position can become 0. 
+
+5. Test the wheels on their own. Send 0, 1, 2, and 3, at 115200 baud, for each sending respectively both 0, right pi, left pi, both pi.
+
+6. Close the serial monitor and then run python3 pi_main.py on the Pi desktop (EVERYTHING NEEDS TO BE IN THE SAME FOLDER HOWEVER) and use the DICT_6X6_50 marker. Check NE go to  00, NW go to 01, SW go to  11, SE go to 10, and check the LCD as well. Then press q to close the camera program. The arduino should continue its holding position. 
+
+7. Capture the position data, so stop the Pi program, close the serial monitor. Set teh right port in capture_position_step.m. Zero and reset the wheels. Then run it and run position_control_sim.m.
+
+8. Capture the open loop data by uploading EENG350_StepResponseTest.ino. Then run capture_step_response.m with the right port.
+
+More on the specific files:
+
+Computer Vision Team: 
 - test_i2c_send.py 
 - test_i2c_receive.ino 
 - pi_main.py 
 - marker_quadrant.py
 
-Localization & Controls: 
+Localization & Controls Team: 
 - capture_position_step.m 
 - capture_step_response.m 
 - MiniProject_PositionControl.ino 
 - position_control_sim.m
 
-Here is a breakdown of them all:
+Here is a breakdown of the specific files:
 
 -- Computer Vision --
 test_i2c_send.py sends a goal to the arduino by typing it in. This lets the controls team test the wheels without running the vision code. It lets us check the I2C link on its own.
